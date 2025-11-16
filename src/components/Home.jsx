@@ -4,12 +4,13 @@ import Banner from './Banner'
 import CoffeeTheme from './CoffeeTheme'
 import SpecialCoffee from './SpecialCoffee'
 import CoffeeBeans from './CoffeeBeans'
+import Reviewpg from './Reviewpg'
 
 const Home = () => {
     return (
         <div>
             {/* Hero wrapper */}
-            <div className="relative h-[450px] md:h-[65 0px] lg:h-[750px]">
+            <div className="relative h-[450px] md:h-[650px] lg:h-[750px]">
                 <Header />
                 <Banner /> {/* absolute */}
             </div>
@@ -18,6 +19,7 @@ const Home = () => {
             <CoffeeTheme />
             <SpecialCoffee />
             <CoffeeBeans />
+            <Reviewpg />
         </div>
     )
 }
