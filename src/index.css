@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* bg images */
+@theme {
+  --background-image-banner: url('./assets/banner.png');
+}
+
+/* container */
+@utility container {
+  padding-inline: 10px;
+  margin-inline: auto;
+
+  @variant sm {
+    padding-inline: 20px;
+  }
+
+  @variant lg {
+    padding-inline: 80px;
+  }
+
+  @variant xl {
+    padding-inline: 120px;
+  }
+}
+
+/* fonts */
+@theme{
+  --font-playfair: Playfair Display, serif;
+  --font-outfit: Outfit, sans-serif;
+  --font-reggae: Reggae One, system-ui;
+}
