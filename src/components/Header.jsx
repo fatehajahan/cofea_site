@@ -35,7 +35,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center text-white gap-x-[25px]">
+          <ul className="hidden md:flex items-center text-white gap-x-[25px] font-outfit">
             <li className="cursor-pointer hover:text-gray-300">Home</li>
             <li className="cursor-pointer hover:text-gray-300">Coffee</li>
             <li className="cursor-pointer hover:text-gray-300">Banery</li>
@@ -66,7 +66,7 @@ const Header = () => {
         text-white p-6 transform transition-transform duration-300 z-40
         ${open ? "translate-x-0" : "translate-x-full"}`}
       >
-        <ul className="space-y-6 text-lg mt-14">
+        <ul className="space-y-6 text-lg mt-14 font-outfit">
           <li className="cursor-pointer">Home</li>
           <li className="cursor-pointer">Coffee</li>
           <li className="cursor-pointer">Banery</li>

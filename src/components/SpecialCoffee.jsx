@@ -3,39 +3,25 @@ import cof01 from '../assets/coffee_1.jpg'
 import cof02 from '../assets/coffee_2.png'
 import cof03 from '../assets/coffee_3.jpg'
 import cof04 from '../assets/coffee_4.jpg'
+import cof05 from '../assets/coffee_5.jpg'
+import cof06 from '../assets/coffee_6.png'
+import cof07 from '../assets/coffee_7.jpg'
+import cof08 from '../assets/coffee_8.jpg'
 
-const coffeeData = [
-  {
-    id: 1,
-    image: cof01,
-    name: "Lungo Coffee",
-    desc: "Rich and smooth flavor for your perfect morning.",
-    price: 200,
-  },
-  {
-    id: 2,
-    image: cof02,
-    name: "Cappuccino",
-    desc: "Creamy and foamy delight for coffee lovers.",
-    price: 250,
-  },
-  {
-    id: 3,
-    image: cof03,
-    name: "Espresso",
-    desc: "Strong and bold taste to kickstart your day.",
-    price: 180,
-  },
-  {
-    id: 4,
-    image: cof04,
-    name: "Latte",
-    desc: "Mild and smooth coffee with steamed milk.",
-    price: 220,
-  },
-]
+
 
 const SpecialCoffee = () => {
+  const menuItems = [
+    { id: 1, name: "Espresso", price: "$3.50", category: "Hot", image: cof01, desc: "Rich and smooth flavor for your perfect morning." },
+    { id: 2, name: "Cappuccino", price: "$4.50", category: "Hot", image: cof02, desc: "Creamy and foamy delight for coffee lovers.", },
+    { id: 3, name: "Latte", price: "$4.75", category: "Hot", image: cof03, desc: "Strong and bold taste to kickstart your day.", },
+    { id: 4, name: "Iced Coffee", price: "$3.75", category: "Cold", image: cof04, desc: "Mild and smooth coffee with steamed milk.", },
+    { id: 5, name: "Mocha", price: "$5.00", category: "Hot", desc: "Mild and smooth coffee with steamed milk.", image: cof05 },
+    { id: 6, name: "Americano", price: "$3.25", category: "Hot", desc: "Mild and smooth coffee with steamed milk.", image: cof06 },
+    { id: 7, name: "Cold Brew", price: "$4.25", category: "Cold", desc: "Mild and smooth coffee with steamed milk.", image: cof07 },
+    { id: 8, name: "Frappuccino", price: "$5.50", category: "Cold", desc: "Mild and smooth coffee with steamed milk.", image: cof08 }
+  ];
+
   return (
     <div className='pt-[80px] px-4 md:px-8 lg:px-16'>
       <div className="max-w-[1320px] mx-auto">
@@ -44,7 +30,7 @@ const SpecialCoffee = () => {
         </h3>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-          {coffeeData.map(coffee => (
+          {menuItems.map(coffee => (
             <div
               key={coffee.id}
               className='group bg-[#eeebe6] p-4 rounded-md overflow-hidden transition-transform duration-500 hover:scale-105 cursor-pointer flex flex-col justify-between'
