@@ -3,6 +3,7 @@
 /* bg images */
 @theme {
   --background-image-banner: url('./assets/banner.png');
+  --background-image-bean: url('./assets/coffeebean.png');
 }
 
 /* container */

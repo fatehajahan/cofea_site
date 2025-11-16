@@ -6,7 +6,7 @@ const Banner = () => {
       <div className="bg-banner bg-cover bg-no-repeat bg-center 
       pt-[120px] md:pt-[180px] lg:pt-[220px]
       h-[450px] md:h-[650px] lg:h-[750px]
-      w-full absolute inset-0 -z-10"
+      w-full absolute inset-0 z-10"
       >
         <div className="container md:text-left text-center">
           {/* Top Text */}
