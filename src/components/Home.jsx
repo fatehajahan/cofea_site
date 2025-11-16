@@ -5,6 +5,7 @@ import CoffeeTheme from './CoffeeTheme'
 import SpecialCoffee from './SpecialCoffee'
 import CoffeeBeans from './CoffeeBeans'
 import Reviewpg from './Reviewpg'
+import Footer from './Footer'
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             <SpecialCoffee />
             <CoffeeBeans />
             <Reviewpg />
+            <Footer />
         </div>
     )
 }
