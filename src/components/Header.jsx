@@ -3,6 +3,7 @@ import logo from "../assets/logo.png";
 import { IoSearchCircle } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { CiHeart } from "react-icons/ci";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -55,7 +56,7 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center text-white gap-x-[25px] font-outfit">
-            {['Home', 'About', 'coffee', 'Review'].map((item) => (
+            {['Home', 'About', 'coffee', 'Review', 'contact'].map((item) => (
               <li
                 key={item}
                 onClick={() => {
@@ -85,7 +86,15 @@ const Header = () => {
 
           {/* Search Icon (Desktop) */}
           <div className="hidden md:block">
-            <IoSearchCircle className="text-[45px] text-white" />
+            <div className="flex items-center gap-[20px]">
+              <IoSearchCircle className="text-[45px] text-white" />
+              <div className="relative">
+                <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
+                <p className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold">
+                  1
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -107,7 +116,7 @@ const Header = () => {
         ${open ? "translate-x-0" : "translate-x-full"}`}
       >
         <ul className="space-y-6 text-lg mt-14 font-outfit">
-          {['Home', 'About', 'coffee', 'Review'].map((item) => (
+          {['Home', 'About', 'coffee', 'Review', 'contact'].map((item) => (
             <li
               key={item}
               onClick={() => {
@@ -137,7 +146,10 @@ const Header = () => {
 
         {/* Mobile Search */}
         <div className="mt-6">
-          <IoSearchCircle className="text-[45px] text-white" />
+          <div className="flex items-center gap-[20px]">
+            <IoSearchCircle className="text-[45px] text-white" />
+            <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
+          </div>
         </div>
       </div>
     </header>

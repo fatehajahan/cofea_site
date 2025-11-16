@@ -7,6 +7,7 @@ import cof05 from '../assets/coffee_5.jpg'
 import cof06 from '../assets/coffee_6.png'
 import cof07 from '../assets/coffee_7.jpg'
 import cof08 from '../assets/coffee_8.jpg'
+import { CiHeart } from 'react-icons/ci'
 
 
 
@@ -33,13 +34,17 @@ const SpecialCoffee = () => {
           {menuItems.map(coffee => (
             <div
               key={coffee.id}
-              className='group bg-[#eeebe6] p-4 rounded-md overflow-hidden transition-transform duration-500 hover:scale-105 cursor-pointer flex flex-col justify-between'
+              className='group bg-[#eeebe6] p-4 rounded-md overflow-hidden transition-transform duration-500 hover:scale-105 cursor-pointer flex flex-col justify-between relative'
             >
               <img
                 src={coffee.image}
                 alt={coffee.name}
                 className='w-full h-[250px] sm:h-[300px] md:h-[250px] lg:h-[220px] object-cover rounded-md mb-4'
               />
+              <div className='absolute top-[25px] right-[30px] flex flex-col items-center'>
+                <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
+                <p className='text-white font-outfit'>favourite</p>
+              </div>
               <h2 className='text-[24px] md:text-[28px] font-semibold font-outfit text-[#30261C] mb-2'>
                 {coffee.name}
               </h2>

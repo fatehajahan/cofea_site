@@ -7,6 +7,7 @@ import CoffeeBeans from './CoffeeBeans'
 import Reviewpg from './Reviewpg'
 import Footer from './Footer'
 import AboutUs from './AboutUs'
+import Conatct from './Conatct'
 
 const Home = () => {
     return (
@@ -30,6 +31,9 @@ const Home = () => {
             </div>
             <div id="about">
                 <AboutUs />
+            </div>
+            <div id="contact">
+                <Conatct />
             </div>
             <Footer />
         </div>
