@@ -6,6 +6,7 @@ import SpecialCoffee from './SpecialCoffee'
 import CoffeeBeans from './CoffeeBeans'
 import Reviewpg from './Reviewpg'
 import Footer from './Footer'
+import AboutUs from './AboutUs'
 
 const Home = () => {
     return (
@@ -13,14 +14,23 @@ const Home = () => {
             {/* Hero wrapper */}
             <div className="relative h-[450px] md:h-[650px] lg:h-[750px]">
                 <Header />
-                <Banner /> {/* absolute */}
+                <div id="home">
+                    <Banner /> 
+                </div>
             </div>
 
             {/* Rest of content appears below banner */}
             <CoffeeTheme />
-            <SpecialCoffee />
+            <div id="coffee">
+                <SpecialCoffee />
+            </div>
             <CoffeeBeans />
-            <Reviewpg />
+            <div id="review">
+                <Reviewpg />
+            </div>
+            <div id="about">
+                <AboutUs />
+            </div>
             <Footer />
         </div>
     )

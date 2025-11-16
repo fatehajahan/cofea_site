@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { IoSearchCircle } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+  const [active, setActive] = useState('Home')
 
   // Close menu on clicking outside
   useEffect(() => {
@@ -25,22 +27,60 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
+  // scroll navigation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true)
+      } else {
+        setIsSticky(false)
+        setOpen(false);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <header className="relative z-30 w-full">
       <div className="container">
         <div className="py-[25px] flex items-center justify-between">
           {/* Logo */}
           <div>
-            <img src={logo} alt="logo" className="w-[90px]" />
+            <Link to="/">
+              <img src={logo} alt="logo" className="w-[90px]" />
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center text-white gap-x-[25px] font-outfit">
-            <li className="cursor-pointer hover:text-gray-300">Home</li>
-            <li className="cursor-pointer hover:text-gray-300">Coffee</li>
-            <li className="cursor-pointer hover:text-gray-300">Banery</li>
-            <li className="cursor-pointer hover:text-gray-300">About</li>
-            <li className="cursor-pointer hover:text-gray-300">Login</li>
+            {['Home', 'About', 'coffee', 'Review'].map((item) => (
+              <li
+                key={item}
+                onClick={() => {
+                  setActive(item)
+                  const section = document.getElementById(item.toLowerCase())
+                  if (section) section.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="relative cursor-pointer group transition duration-300"
+              >
+                <span
+                  className={`relative ${active === item
+                    ? 'text-[#9e9e9e] drop-shadow-[0_0_6px_red]'
+                    : 'text-white group-hover:text-[#9e9e9e] group-hover:drop-shadow-[0_0_6px_red]'
+                    }`}
+                >
+                  {item}
+                </span>
+
+                {/* Underline */}
+                <span
+                  className={`absolute left-0 bottom-0 h-[2px] bg-[#9e9e9e] transition-all duration-500 ${active === item ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                ></span>
+              </li>
+            ))}
           </ul>
 
           {/* Search Icon (Desktop) */}
@@ -67,11 +107,32 @@ const Header = () => {
         ${open ? "translate-x-0" : "translate-x-full"}`}
       >
         <ul className="space-y-6 text-lg mt-14 font-outfit">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">Coffee</li>
-          <li className="cursor-pointer">Banery</li>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Login</li>
+          {['Home', 'About', 'coffee', 'Review'].map((item) => (
+            <li
+              key={item}
+              onClick={() => {
+                setActive(item)
+                const section = document.getElementById(item.toLowerCase())
+                if (section) section.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="relative cursor-pointer group transition duration-300"
+            >
+              <span
+                className={`relative ${active === item
+                  ? 'text-[#9e9e9e] drop-shadow-[0_0_6px_red]'
+                  : 'text-white group-hover:text-[#9e9e9e] group-hover:drop-shadow-[0_0_6px_red]'
+                  }`}
+              >
+                {item}
+              </span>
+
+              {/* Underline */}
+              <span
+                className={`absolute left-0 bottom-0 h-[2px] bg-[#9e9e9e] transition-all duration-500 ${active === item ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+              ></span>
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Search */}
