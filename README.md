@@ -20,6 +20,35 @@ A modern, responsive Coffee Shop web application built with **React** and **Vite
 ## Installation
 
 1. Clone the repository:
-
 ```bash
 git clone https://github.com/fatehajahan/cofea_site.git
+```
+
+2. Navigate to the project directory:
+```bash
+cd cofea_site
+```
+
+3. Install dependencies:
+```bash
+npm install
+```
+
+4. Start the development server:
+```bash
+npm run dev
+```
+
+---
+
+## Contact
+
+**Developer:** Fateha Jahan  
+**Email:** fatehajahan.dev@gmail.com  
+**GitHub:** [fatehajahan](https://github.com/fatehajahan)
+
+---
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
