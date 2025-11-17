@@ -51,7 +51,7 @@ const Reviewpg = () => {
                     <p className="font-outfit font-semibold text-[18px]">
                       {rev.name}
                     </p>
-                    <p className="font-outfit text-[14px]">{rev.role}</p>
+                    <p className="font-outfit text-[14px] ">{rev.role}</p>
                   </div>
                 </div>
 
@@ -78,14 +78,14 @@ const Reviewpg = () => {
                 className="w-[60px] h-[60px]"
               />
               <div>
-                <p className="font-outfit font-semibold text-[18px]">
+                <p className="font-outfit font-semibold text-[18px] text-[#30261C]">
                   {rev.name}
                 </p>
-                <p className="font-outfit text-[14px]">{rev.role}</p>
+                <p className="font-outfit text-[14px] text-[#30261C]">{rev.role}</p>
               </div>
             </div>
 
-            <p className="font-outfit text-[14px] leading-relaxed">
+            <p className="font-outfit text-[14px] leading-relaxed text-[#30261C]">
               {rev.text}
             </p>
           </div>

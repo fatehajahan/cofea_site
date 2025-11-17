@@ -30,3 +30,15 @@
   --font-outfit: Outfit, sans-serif;
   --font-reggae: Reggae One, system-ui;
 }
+
+/* theme */
+/* Global Dark Mode */
+.dark {
+  background-color: #000000 !important;
+  color: white !important;
+}
+
+/* .dark * {
+  color: white !important;
+  border-color: #ffffff50;
+} */

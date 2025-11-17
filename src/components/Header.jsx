@@ -4,14 +4,16 @@ import fav1 from '../assets/coffee_1.jpg'
 import { IoSearchCircle } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import { CiHeart } from "react-icons/ci";
+import { CiHeart, CiLight } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromFavourite } from "../Slices/favouriteSlice";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { toggleTheme } from "../Slices/themeSlice";
 
 const Header = () => {
+  const theme = useSelector((state) => state.themeDetails.theme);
   const data = useSelector((state) => state.favouriteDetails.favourites)
-  console.log(data)
+  console.log(theme)
   const dispatch = useDispatch()
   const [favourite, setFavourite] = useState(false);
   const favDesktopRef = useRef(null);
@@ -85,6 +87,11 @@ const Header = () => {
       console.log(error)
     }
   }
+
+  // theme switch
+  const handleTheme = () => {
+    dispatch(toggleTheme());
+  };
   return (
     <header className="relative z-30 w-full">
       <ToastContainer
@@ -152,6 +159,15 @@ const Header = () => {
                 <div className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold text-black">
                   {data.length > 9 ? <p>9+</p> : <p>{data.length}</p>}
                 </div>
+              </div>
+
+              {/* theme button */}
+              <div onClick={handleTheme} className="cursor-pointer">
+                {theme === "light" ? (
+                  <CiLight className="text-[40px] text-white" />
+                ) : (
+                  <CiLight className="text-[40px] text-yellow-300" />
+                )}
               </div>
             </div>
 

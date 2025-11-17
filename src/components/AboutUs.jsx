@@ -17,7 +17,7 @@ const AboutUs = () => {
 
         {/* Right Text */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h2 className="text-3xl sm:text-4xl font-playfair font-semibold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-playfair font-semibold mb-4 text-[#30261C]">
             About Our Coffee Shop
           </h2>
           <p className="text-gray-700 mb-6 text-[15px] sm:text-[16px] leading-relaxed">

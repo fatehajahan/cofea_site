@@ -6,7 +6,7 @@ const Contact = () => {
             <div className="container mx-auto px-4">
                 {/* Heading */}
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl sm:text-4xl font-playfair font-semibold mb-2">
+                    <h2 className="text-3xl sm:text-4xl font-playfair font-semibold mb-2 text-[#30261C]">
                         Contact Us
                     </h2>
                     <p className="text-gray-600 text-[15px] sm:text-[16px]">
@@ -32,7 +32,7 @@ const Contact = () => {
                     <div className="lg:w-1/3 w-full flex flex-col justify-start gap-6">
                         {/* Address */}
                         <div>
-                            <h3 className="text-xl font-semibold mb-2">Location</h3>
+                            <h3 className="text-xl font-semibold mb-2 text-[#30261C]">Location</h3>
                             <p className="text-gray-700">
                                 123 Coffee Street, Banani, Dhaka, Bangladesh
                             </p>
@@ -40,7 +40,7 @@ const Contact = () => {
 
                         {/* Hours */}
                         <div>
-                            <h3 className="text-xl font-semibold mb-2">Business Hours</h3>
+                            <h3 className="text-xl font-semibold mb-2 text-[#30261C]">Business Hours</h3>
                             <ul className="text-gray-700 space-y-1">
                                 <li>Monday – Friday: 8:00 AM – 8:00 PM</li>
                                 <li>Saturday: 9:00 AM – 6:00 PM</li>
@@ -50,7 +50,7 @@ const Contact = () => {
 
                         {/* Contact */}
                         <div>
-                            <h3 className="text-xl font-semibold mb-2">Get in Touch</h3>
+                            <h3 className="text-xl font-semibold mb-2 text-[#30261C]">Get in Touch</h3>
                             <p className="text-gray-700">Phone: +880 123 456 789</p>
                             <p className="text-gray-700">Email: info@coffeeshop.com</p>
                         </div>

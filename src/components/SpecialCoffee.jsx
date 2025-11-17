@@ -75,12 +75,12 @@ const SpecialCoffee = () => {
               <h2 className='text-[24px] md:text-[28px] font-semibold font-outfit text-[#30261C] mb-2'>
                 {coffee.name}
               </h2>
-              <p className='font-outfit text-[16px] md:text-[18px] mb-4'>
+              <p className='font-outfit text-[16px] md:text-[18px] mb-4 text-[#30261C]'>
                 {coffee.desc}
               </p>
 
               <div className='flex items-center justify-between'>
-                <p className='font-outfit text-[18px] md:text-[20px] font-semibold'>
+                <p className='font-outfit text-[18px] md:text-[20px] font-semibold text-[#30261C]'>
                   TK. {coffee.price}
                 </p>
                 <button className='bg-[#30261C] text-white py-2 px-4 md:px-5 rounded-[10px] text-[14px] md:text-[16px]'>
