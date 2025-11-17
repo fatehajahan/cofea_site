@@ -10,6 +10,7 @@ import cof08 from '../assets/coffee_8.jpg'
 import { CiHeart } from 'react-icons/ci'
 import { useDispatch } from 'react-redux'
 import { addToFavourite } from '../Slices/favouriteSlice'
+import { Bounce, toast, ToastContainer } from 'react-toastify'
 
 
 
@@ -29,6 +30,7 @@ const SpecialCoffee = () => {
   const addToFav = (coffee) => {
     try {
       dispatch(addToFavourite(coffee));
+      toast.success("Added to Favourites!!")
     } catch (error) {
       console.log(error)
     }
@@ -37,6 +39,19 @@ const SpecialCoffee = () => {
 
   return (
     <div className='pt-[80px] px-4 md:px-8 lg:px-16'>
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="max-w-[1320px] mx-auto">
         <h3 className='font-playfair text-[28px] md:text-[32px] font-semibold uppercase text-center mb-12'>
           Our Special Coffee
@@ -53,7 +68,7 @@ const SpecialCoffee = () => {
                 alt={coffee.name}
                 className='w-full h-[250px] sm:h-[300px] md:h-[250px] lg:h-[220px] object-cover rounded-md mb-4'
               />
-              <div onClick={()=>addToFav(coffee)} className='absolute top-[25px] right-[30px] flex flex-col items-center'>
+              <div onClick={() => addToFav(coffee)} className='absolute top-[25px] right-[30px] flex flex-col items-center'>
                 <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
                 <p className='text-white font-outfit'>favourite</p>
               </div>

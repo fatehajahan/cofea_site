@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromFavourite } from "../Slices/favouriteSlice";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const Header = () => {
   const data = useSelector((state) => state.favouriteDetails.favourites)
@@ -78,12 +79,27 @@ const Header = () => {
   const removeFav = (coffee) => {
     try {
       dispatch(removeFromFavourite(coffee));
+      setFavourite(false)
+      toast.success("Removed Item Successfully!!")
     } catch (error) {
       console.log(error)
     }
   }
   return (
     <header className="relative z-30 w-full">
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="container">
         <div className="py-[25px] flex items-center justify-between">
           {/* Logo */}
@@ -248,7 +264,7 @@ const Header = () => {
       {/* Favourite Slide Panel for mobile and responsive */}
       <div
         ref={favMobileRef}
-        className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-xl text-black p-6 transform transition-transform duration-300 z-40 overflow-y-scroll lg:hidden md:hidden block ${favourite ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 right-0 h-full w-full bg-white shadow-xl text-black p-6 transform transition-transform duration-300 z-40 overflow-y-scroll lg:hidden md:hidden block ${favourite ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
