@@ -1,16 +1,36 @@
 import React, { useState, useRef, useEffect } from "react";
 import logo from "../assets/logo.png";
+import fav1 from '../assets/coffee_1.jpg'
 import { IoSearchCircle } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 
 const Header = () => {
+  const [favourite, setFavourite] = useState(false);
+  const favRef = useRef(null);
+  const favBtnRef = useRef(null);
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const [active, setActive] = useState('Home')
 
+  // close favourite slider outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        favourite &&
+        favRef.current &&
+        !favRef.current.contains(e.target) &&
+        favBtnRef.current &&
+        !favBtnRef.current.contains(e.target)
+      ) {
+        setFavourite(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [favourite])
   // Close menu on clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -21,6 +41,7 @@ const Header = () => {
         !buttonRef.current.contains(e.target)
       ) {
         setOpen(false);
+        setFavourite(false);
       }
     };
 
@@ -36,6 +57,7 @@ const Header = () => {
       } else {
         setIsSticky(false)
         setOpen(false);
+        setFavourite(false);
       }
     }
 
@@ -85,17 +107,57 @@ const Header = () => {
           </ul>
 
           {/* Search Icon (Desktop) */}
+          {/* Search Icon + Favourite (Desktop) */}
           <div className="hidden md:block">
             <div className="flex items-center gap-[20px]">
               <IoSearchCircle className="text-[45px] text-white" />
-              <div className="relative">
-                <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
-                <p className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold">
+
+              {/* Heart Button */}
+              <div className="relative" ref={favBtnRef} onClick={() => setFavourite(!favourite)}>
+                <CiHeart className="text-[40px] text-white cursor-pointer duration-300" />
+
+                <p className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold text-black">
                   1
                 </p>
               </div>
             </div>
+
+            {/* Favourite Slide Panel */}
+            <div
+              ref={favRef}
+              className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-xl text-black p-6 transform transition-transform duration-300 z-40 ${favourite ? "translate-x-0" : "translate-x-full"}`}
+            >
+              {/* Header */}
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="font-playfair text-[22px] font-semibold">Your Favorites</h2>
+
+                <button
+                  onClick={() => setFavourite(false)}
+                  className="text-black text-2xl font-bold"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Content */}
+              <p className="font-outfit text-[15px] text-gray-700">
+                <div className="bg-[#e2d9c8] p-5 rounded-2xl">
+                  <div className="flex items-center gap-[15px]">
+                    <img src={fav1} alt="" className="w-[100px] h-[100px] object-cover" />
+                    <div>
+                      <p className="font-playfair text-[18px] font-bold">Espresso</p>
+                      <p className="font-outfit text-[12px]">Rich and smooth flavor for your perfect morning.</p>
+
+                      <button className="bg-[#30261c] text-white py-[5px] px-[10px] rounded-xl mt-[10px] border border-[#30261c] hover:bg-transparent hover:text-black cursor-pointer duration-500">
+                        Remove from Favourite
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </p>
+            </div>
           </div>
+
 
           {/* Mobile Menu Button */}
           <button
@@ -148,7 +210,12 @@ const Header = () => {
         <div className="mt-6">
           <div className="flex items-center gap-[20px]">
             <IoSearchCircle className="text-[45px] text-white" />
-            <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
+            <div className="relative">
+              <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
+              <p className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold text-black">
+                1
+              </p>
+            </div>
           </div>
         </div>
       </div>
