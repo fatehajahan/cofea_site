@@ -8,6 +8,7 @@ import Reviewpg from './Reviewpg'
 import Footer from './Footer'
 import AboutUs from './AboutUs'
 import Conatct from './Conatct'
+import { CiCircleChevUp } from 'react-icons/ci'
 
 const Home = () => {
     return (
@@ -16,7 +17,7 @@ const Home = () => {
             <div className="relative h-[450px] md:h-[650px] lg:h-[750px]">
                 <Header />
                 <div id="home">
-                    <Banner /> 
+                    <Banner />
                 </div>
             </div>
 
@@ -36,6 +37,12 @@ const Home = () => {
                 <Conatct />
             </div>
             <Footer />
+            <CiCircleChevUp
+                onClick={() => window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                })}
+                id='top' className="fixed bottom-6 right-6 z-50 text-white bg-[#30261c] p-2 rounded-full text-[45px] cursor-pointer shadow-lg" />
         </div>
     )
 }
