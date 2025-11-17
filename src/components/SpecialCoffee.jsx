@@ -8,10 +8,13 @@ import cof06 from '../assets/coffee_6.png'
 import cof07 from '../assets/coffee_7.jpg'
 import cof08 from '../assets/coffee_8.jpg'
 import { CiHeart } from 'react-icons/ci'
+import { useDispatch } from 'react-redux'
+import { addToFavourite } from '../Slices/favouriteSlice'
 
 
 
 const SpecialCoffee = () => {
+  const dispatch = useDispatch()
   const menuItems = [
     { id: 1, name: "Espresso", price: "$3.50", category: "Hot", image: cof01, desc: "Rich and smooth flavor for your perfect morning." },
     { id: 2, name: "Cappuccino", price: "$4.50", category: "Hot", image: cof02, desc: "Creamy and foamy delight for coffee lovers.", },
@@ -22,6 +25,15 @@ const SpecialCoffee = () => {
     { id: 7, name: "Cold Brew", price: "$4.25", category: "Cold", desc: "Mild and smooth coffee with steamed milk.", image: cof07 },
     { id: 8, name: "Frappuccino", price: "$5.50", category: "Cold", desc: "Mild and smooth coffee with steamed milk.", image: cof08 }
   ];
+
+  const addToFav = (coffee) => {
+    try {
+      dispatch(addToFavourite(coffee));
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <div className='pt-[80px] px-4 md:px-8 lg:px-16'>
@@ -41,7 +53,7 @@ const SpecialCoffee = () => {
                 alt={coffee.name}
                 className='w-full h-[250px] sm:h-[300px] md:h-[250px] lg:h-[220px] object-cover rounded-md mb-4'
               />
-              <div className='absolute top-[25px] right-[30px] flex flex-col items-center'>
+              <div onClick={()=>addToFav(coffee)} className='absolute top-[25px] right-[30px] flex flex-col items-center'>
                 <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
                 <p className='text-white font-outfit'>favourite</p>
               </div>

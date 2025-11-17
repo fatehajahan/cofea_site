@@ -5,8 +5,13 @@ import { IoSearchCircle } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromFavourite } from "../Slices/favouriteSlice";
 
 const Header = () => {
+  const data = useSelector((state) => state.favouriteDetails.favourites)
+  console.log(data)
+  const dispatch = useDispatch()
   const [favourite, setFavourite] = useState(false);
   const favRef = useRef(null);
   const favBtnRef = useRef(null);
@@ -14,6 +19,7 @@ const Header = () => {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const [active, setActive] = useState('Home')
+  const [isSticky, setIsSticky] = useState(true)
 
   // close favourite slider outside
   useEffect(() => {
@@ -31,6 +37,7 @@ const Header = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [favourite])
+
   // Close menu on clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -65,6 +72,13 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const removeFav = (coffee) => {
+    try {
+      dispatch(removeFromFavourite(coffee));
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <header className="relative z-30 w-full">
       <div className="container">
@@ -90,8 +104,8 @@ const Header = () => {
               >
                 <span
                   className={`relative ${active === item
-                    ? 'text-[#9e9e9e] drop-shadow-[0_0_6px_red]'
-                    : 'text-white group-hover:text-[#9e9e9e] group-hover:drop-shadow-[0_0_6px_red]'
+                    ? 'text-[#9e9e9e] drop-shadow-[0_0_6px_#b58855]'
+                    : 'text-white group-hover:text-[#9e9e9e] group-hover:drop-shadow-[0_0_6px_#b58855]'
                     }`}
                 >
                   {item}
@@ -116,16 +130,16 @@ const Header = () => {
               <div className="relative" ref={favBtnRef} onClick={() => setFavourite(!favourite)}>
                 <CiHeart className="text-[40px] text-white cursor-pointer duration-300" />
 
-                <p className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold text-black">
-                  1
-                </p>
+                <div className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold text-black">
+                  {data.length > 9 ? <p>9+</p> : <p>{data.length}</p>}
+                </div>
               </div>
             </div>
 
             {/* Favourite Slide Panel */}
             <div
               ref={favRef}
-              className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-xl text-black p-6 transform transition-transform duration-300 z-40 ${favourite ? "translate-x-0" : "translate-x-full"}`}
+              className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-xl text-black p-6 transform transition-transform duration-300 z-40 overflow-y-scroll ${favourite ? "translate-x-0" : "translate-x-full"}`}
             >
               {/* Header */}
               <div className="flex justify-between items-center mb-4">
@@ -133,31 +147,38 @@ const Header = () => {
 
                 <button
                   onClick={() => setFavourite(false)}
-                  className="text-black text-2xl font-bold"
+                  className="text-black text-2xl font-bold cursor-pointer"
                 >
                   ✕
                 </button>
               </div>
 
               {/* Content */}
-              <p className="font-outfit text-[15px] text-gray-700">
-                <div className="bg-[#e2d9c8] p-5 rounded-2xl">
-                  <div className="flex items-center gap-[15px]">
-                    <img src={fav1} alt="" className="w-[100px] h-[100px] object-cover" />
-                    <div>
-                      <p className="font-playfair text-[18px] font-bold">Espresso</p>
-                      <p className="font-outfit text-[12px]">Rich and smooth flavor for your perfect morning.</p>
+              {
+                data.length > 0 ?
+                  data.map((cof) => {
+                    return (
+                      <div key={cof.id} className="font-outfit text-[15px] text-gray-700">
+                        <div className="bg-[#e2d9c8] p-5 rounded-2xl mt-[20px]">
+                          <div className="flex items-center gap-[15px]">
+                            <img src={cof.image} alt="" className="w-[100px] h-[100px] object-cover" />
+                            <div>
+                              <p className="font-playfair text-[18px] font-bold">{cof.name}</p>
+                              <p className="font-outfit text-[12px]">{cof.desc}</p>
+                              <p className="font-outfit text-[12px]">{cof.price}</p>
 
-                      <button className="bg-[#30261c] text-white py-[5px] px-[10px] rounded-xl mt-[10px] border border-[#30261c] hover:bg-transparent hover:text-black cursor-pointer duration-500">
-                        Remove from Favourite
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </p>
+                              <button onClick={() => removeFav(cof.id)} className="bg-[#30261c] text-white py-[5px] px-[10px] rounded-xl mt-[10px] border border-[#30261c] hover:bg-transparent hover:text-black cursor-pointer duration-500">
+                                Remove from Favourite
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }) : <div className="flex justify-center items-center h-screen">No Item added as Favourite</div>
+              }
             </div>
           </div>
-
 
           {/* Mobile Menu Button */}
           <button
@@ -190,8 +211,8 @@ const Header = () => {
             >
               <span
                 className={`relative ${active === item
-                  ? 'text-[#9e9e9e] drop-shadow-[0_0_6px_red]'
-                  : 'text-white group-hover:text-[#9e9e9e] group-hover:drop-shadow-[0_0_6px_red]'
+                  ? 'text-[#9e9e9e] drop-shadow-[0_0_6px_#b58855]'
+                  : 'text-white group-hover:text-[#9e9e9e] group-hover:drop-shadow-[0_0_6px_#b58855]'
                   }`}
               >
                 {item}
