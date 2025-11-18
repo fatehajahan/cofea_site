@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import profilePht from "../assets/revProfile.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const Reviewpg = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+      mirror: false,
+      offset: 120,
+    });
+  }, []);
   const reviews = [
     {
       name: "James Smith",
@@ -40,7 +51,7 @@ const Reviewpg = () => {
         <Swiper spaceBetween={20} slidesPerView={1}>
           {reviews.map((rev, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-[#ebe7df] p-[20px] rounded-2xl shadow-sm">
+              <div data-aos="fade-right" className="bg-[#ebe7df] p-[20px] rounded-2xl shadow-sm">
                 <div className="flex items-center gap-4 mb-3">
                   <img
                     src={rev.img}

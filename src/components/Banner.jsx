@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Banner = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+      mirror: false,
+      offset: 120,
+    });
+  }, []);
   return (
     <div>
       <div className="bg-banner bg-cover bg-no-repeat bg-center 
@@ -8,7 +19,7 @@ const Banner = () => {
       h-[450px] md:h-[650px] lg:h-[750px]
       w-full absolute inset-0 z-10"
       >
-        <div className="container md:text-left text-center">
+        <div data-aos="fade-up" className="container md:text-left text-center">
           {/* Top Text */}
           <p className="uppercase text-white font-outfit tracking-[4px] text-sm md:text-base">
             Welcome

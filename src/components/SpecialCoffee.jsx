@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cof01 from '../assets/coffee_1.jpg'
 import cof02 from '../assets/coffee_2.png'
 import cof03 from '../assets/coffee_3.jpg'
@@ -11,8 +11,8 @@ import { CiHeart } from 'react-icons/ci'
 import { useDispatch } from 'react-redux'
 import { addToFavourite } from '../Slices/favouriteSlice'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
-
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SpecialCoffee = () => {
   const dispatch = useDispatch()
@@ -36,6 +36,15 @@ const SpecialCoffee = () => {
     }
   }
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+      mirror: false,
+      offset: 120,
+    });
+  }, []);
 
   return (
     <div className='pt-[80px] px-4 md:px-8 lg:px-16'>
@@ -60,6 +69,7 @@ const SpecialCoffee = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
           {menuItems.map(coffee => (
             <div
+              data-aos="fade-right"
               key={coffee.id}
               className='group bg-[#eeebe6] p-4 rounded-md overflow-hidden transition-transform duration-500 hover:scale-105 cursor-pointer flex flex-col justify-between relative'
             >
