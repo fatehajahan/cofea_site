@@ -10,7 +10,7 @@ import { removeFromFavourite } from "../Slices/favouriteSlice";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import { toggleTheme } from "../Slices/themeSlice";
 
-const Header = () => {
+const Header = ({ setActiveFromTop }) => {
   const theme = useSelector((state) => state.themeDetails.theme);
   const data = useSelector((state) => state.favouriteDetails.favourites)
   console.log(theme)
@@ -78,6 +78,13 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (typeof setActiveFromTop === "function") {
+      setActiveFromTop(() => setActive);
+    }
+  }, [setActiveFromTop]);
+
+  // remove from favourite
   const removeFav = (coffee) => {
     try {
       dispatch(removeFromFavourite(coffee));

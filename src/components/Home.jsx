@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import Banner from './Banner'
 import CoffeeTheme from './CoffeeTheme'
@@ -11,11 +11,13 @@ import Conatct from './Conatct'
 import { CiCircleChevUp } from 'react-icons/ci'
 
 const Home = () => {
+    const [setHeaderActive, setSetHeaderActive] = useState(null);
+
     return (
         <div>
             {/* Hero wrapper */}
             <div className="relative h-[450px] md:h-[650px] lg:h-[750px]">
-                <Header />
+                <Header setActiveFromTop={setSetHeaderActive} />
                 <div id="home">
                     <Banner />
                 </div>
@@ -38,11 +40,11 @@ const Home = () => {
             </div>
             <Footer />
             <CiCircleChevUp
-                onClick={() => window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                })}
-                id='top' className="fixed bottom-6 right-6 z-50 text-white bg-[#30261c] p-2 rounded-full text-[45px] cursor-pointer shadow-lg" />
+                onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                    if (setHeaderActive) setHeaderActive('Home');
+                }}
+                id='top' className="fixed bottom-6 right-6 z-50 text-white bg-[#895017] p-2 rounded-full text-[45px] cursor-pointer shadow-lg" />
         </div>
     )
 }
