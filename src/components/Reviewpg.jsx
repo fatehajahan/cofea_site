@@ -48,14 +48,14 @@ const Reviewpg = () => {
                     className="w-[50px] h-[50px]"
                   />
                   <div>
-                    <p className="font-outfit font-semibold text-[18px]">
+                    <p className="font-outfit font-semibold text-[18px] text-[#30261C]">
                       {rev.name}
                     </p>
-                    <p className="font-outfit text-[14px] ">{rev.role}</p>
+                    <p className="font-outfit text-[14px] text-[#30261C]">{rev.role}</p>
                   </div>
                 </div>
 
-                <p className="font-outfit text-[13px] leading-relaxed">
+                <p className="font-outfit text-[13px] leading-relaxed text-[#30261C]">
                   {rev.text}
                 </p>
               </div>
