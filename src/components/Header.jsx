@@ -223,13 +223,23 @@ const Header = ({ setActiveFromTop }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            ref={buttonRef}
-            className="md:hidden text-white text-3xl relative z-50"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <HiX className="text-white" /> : <HiMenu />}
-          </button>
+          <div className="flex items-center gap-[10px]">
+            <button
+              ref={buttonRef}
+              className="md:hidden text-white text-3xl relative z-50"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <HiX className="text-white" /> : <HiMenu />}
+            </button>
+
+            <div onClick={handleTheme} className="cursor-pointer md:hidden block">
+              {theme === "light" ? (
+                <CiLight className="text-[40px] text-white" />
+              ) : (
+                <CiLight className="text-[40px] text-yellow-300" />
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
