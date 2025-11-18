@@ -223,7 +223,7 @@ const Header = ({ setActiveFromTop }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-[10px] md:hidden block">
             <button
               ref={buttonRef}
               className="md:hidden text-white text-3xl relative z-50"
