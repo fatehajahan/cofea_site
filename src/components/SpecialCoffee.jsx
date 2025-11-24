@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import cof01 from '../assets/coffee_1.jpg'
 import cof02 from '../assets/coffee_2.png'
 import cof03 from '../assets/coffee_3.jpg'
@@ -46,6 +46,27 @@ const SpecialCoffee = () => {
     });
   }, []);
 
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1)
+  const coffeePerPg = 4;
+
+  const lastIndex = currentPage * coffeePerPg;
+  const firstIndex = lastIndex - coffeePerPg;
+
+  const currentCoffees = menuItems.slice(firstIndex, lastIndex)
+  const totalPage = Math.ceil(menuItems.length / coffeePerPg)
+
+  const nextPage = () => {
+    if (currentPage < totalPage) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
   return (
     <div className='pt-[80px] px-4 md:px-8 lg:px-16'>
       <ToastContainer
@@ -67,11 +88,11 @@ const SpecialCoffee = () => {
         </h3>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-          {menuItems.map(coffee => (
+          {currentCoffees.map(coffee => (
             <div
               data-aos="fade-right"
               key={coffee.id}
-              className='group bg-[#eeebe6] p-4 rounded-md overflow-hidden transition-transform duration-500 hover:scale-105 cursor-pointer flex flex-col justify-between relative'
+              className='cofeeCard group bg-[#eeebe6] text-[#30261C] p-4 rounded-md overflow-hidden transform transition-transform duration-500 hover:scale-105 cursor-pointer flex flex-col justify-between relative'
             >
               <img
                 src={coffee.image}
@@ -82,15 +103,15 @@ const SpecialCoffee = () => {
                 <CiHeart className=' text-[40px] text-white cursor-pointer duration-300' />
                 <p className='text-white font-outfit'>favourite</p>
               </div>
-              <h2 className='text-[24px] md:text-[28px] font-semibold font-outfit text-[#30261C] mb-2'>
+              <h2 className='text-[24px] md:text-[28px] font-semibold font-outfit  mb-2'>
                 {coffee.name}
               </h2>
-              <p className='font-outfit text-[16px] md:text-[18px] mb-4 text-[#30261C]'>
+              <p className='font-outfit text-[16px] md:text-[18px] mb-4 '>
                 {coffee.desc}
               </p>
 
               <div className='flex items-center justify-between'>
-                <p className='font-outfit text-[18px] md:text-[20px] font-semibold text-[#30261C]'>
+                <p className='font-outfit text-[18px] md:text-[20px] font-semibold '>
                   TK. {coffee.price}
                 </p>
                 <button className='bg-[#30261C] text-white py-2 px-4 md:px-5 rounded-[10px] text-[14px] md:text-[16px]'>
@@ -100,6 +121,28 @@ const SpecialCoffee = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <button
+          onClick={prevPage}
+          disabled={currentPage === 1}
+          className="py-2 px-4 border rounded disabled:opacity-40"
+        >
+          Previous
+        </button>
+
+        <p className="font-semibold">
+          Page {currentPage} of {totalPage}
+        </p>
+
+        <button
+          onClick={nextPage}
+          disabled={currentPage === totalPage}
+          className="py-2 px-4 border rounded disabled:opacity-40"
+        >
+          Next
+        </button>
       </div>
     </div>
   )

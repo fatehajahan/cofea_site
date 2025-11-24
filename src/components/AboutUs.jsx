@@ -14,7 +14,7 @@ const AboutUs = () => {
     });
   }, []);
   return (
-    <section className="py-[80px] bg-[#f7f3ef]">
+    <section className="aboutDiv py-[80px] bg-[#f7f3ef]">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
 
         {/* Left Image */}

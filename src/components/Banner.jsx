@@ -42,11 +42,7 @@ const Banner = () => {
 
           {/* Button */}
           <button
-            className="bg-white text-black font-outfit py-2 md:py-3 w-[100px] md:w-[150px] lg:w-[170px]
-          rounded-full mt-5 cursor-pointer 
-          border border-white
-          hover:bg-transparent hover:text-white 
-          transition duration-500 md:text-[15px] text-[12px]"
+            className="bg-white text-black font-outfit py-2 md:py-3 w-[100px] md:w-[150px] lg:w-[170px] rounded-full mt-5 cursor-pointer border border-white hover:bg-transparent hover:text-white transition duration-500 md:text-[15px] text-[12px]"
           >
             Order Now
           </button>

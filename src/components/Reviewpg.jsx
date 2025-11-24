@@ -37,7 +37,7 @@ const Reviewpg = () => {
   ];
 
   return (
-    <div className="py-[80px] sm:py-[100px]">
+    <div className=" py-[80px] sm:py-[100px]">
       {/* Heading */}
       <div className="text-center px-4">
         <h2 className="font-reggae text-[26px] sm:text-[30px]">Come and Join</h2>
@@ -51,7 +51,7 @@ const Reviewpg = () => {
         <Swiper spaceBetween={20} slidesPerView={1}>
           {reviews.map((rev, index) => (
             <SwiperSlide key={index}>
-              <div data-aos="fade-right" className="bg-[#ebe7df] p-[20px] rounded-2xl shadow-sm">
+              <div data-aos="fade-right" className="revPg bg-[#ebe7df] p-[20px] rounded-2xl shadow-sm">
                 <div className="flex items-center gap-4 mb-3">
                   <img
                     src={rev.img}
@@ -80,7 +80,7 @@ const Reviewpg = () => {
         {reviews.map((rev, index) => (
           <div
             key={index}
-            className="bg-[#ebe7df] p-[20px] rounded-2xl shadow-sm"
+            className="revPg bg-[#ebe7df] p-[20px] rounded-2xl shadow-sm"
           >
             <div className="flex items-center gap-4 mb-3">
               <img

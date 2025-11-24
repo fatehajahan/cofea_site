@@ -31,14 +31,72 @@
   --font-reggae: Reggae One, system-ui;
 }
 
-/* theme */
 /* Global Dark Mode */
 .dark {
-  background-color: #000000 !important;
-  color: white !important;
+  background-color: #000000;
+  color: white;
 }
 
-/* .dark * {
-  color: white !important;
+/* Only affect text-level elements (not everything!) */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark p,
+.dark span,
+.dark a,
+.dark li,
+.dark label,
+.dark strong {
+  color: #fff;
+}
+
+/* Inputs, borders */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #111;
+  color: white;
   border-color: #ffffff50;
-} */
+}
+
+/* Cards or containers */
+.dark .card,
+.dark .box,
+.dark .section {
+  background-color: #111;
+  color: white;
+}
+
+/* Optional: Buttons */
+.dark button {
+  background-color: transparent;
+  color: white;
+  border-color: #ffffff50;
+}
+
+.dark .aboutDiv{
+  background-color: #652901;
+}
+.dark .contactDiv{
+  background-color: #652901;
+}
+.dark .cofeeCard {
+  background-color: #652901;
+}
+.dark .revPg{
+  background-color: #652901;
+}
+.dark .cofBeans{
+  color: #30261C;
+  border: #30261C;
+}
+.dark .favBtn{
+  color: black;
+}
+.dark .cofBeansBtn{
+  color: white;
+  background-color: #652901;
+}
