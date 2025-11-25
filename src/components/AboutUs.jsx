@@ -18,7 +18,7 @@ const AboutUs = () => {
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
 
         {/* Left Image */}
-        <div data-aos="fade-down" className="lg:w-1/2">
+        <div data-aos="fade-right" className="lg:w-1/2">
           <img
             src={shopImg}
             alt="Our Coffee Shop"
@@ -27,7 +27,7 @@ const AboutUs = () => {
         </div>
 
         {/* Right Text */}
-        <div data-aos="fade-right" className="lg:w-1/2 text-center lg:text-left">
+        <div data-aos="fade-left" className="lg:w-1/2 text-center lg:text-left">
           <h2 className="text-3xl sm:text-4xl font-playfair font-semibold mb-4 text-[#30261C]">
             About Our Coffee Shop
           </h2>

@@ -13,7 +13,6 @@ import { toggleTheme } from "../Slices/themeSlice";
 const Header = ({ setActiveFromTop }) => {
   const theme = useSelector((state) => state.themeDetails.theme);
   const data = useSelector((state) => state.favouriteDetails.favourites)
-  console.log(theme)
   const dispatch = useDispatch()
   const [favourite, setFavourite] = useState(false);
   const favDesktopRef = useRef(null);
@@ -287,7 +286,7 @@ const Header = ({ setActiveFromTop }) => {
               <CiHeart className="text-[40px] text-white cursor-pointer duration-300" />
 
               <div className="bg-[#e2d9c8] w-[20px] h-[20px] rounded-full absolute top-0 left-0 flex items-center justify-center font-outfit font-semibold text-black">
-                {data.length > 9 ? <p>9+</p> : <p>{data.length}</p>}
+                {data.length > 9 ? <p className="favBtn">9+</p> : <p className="favBtn">{data.length}</p>}
               </div>
             </div>
           </div>

@@ -127,7 +127,7 @@ const SpecialCoffee = () => {
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className="py-2 px-4 border rounded disabled:opacity-40"
+          className="py-2 px-4 border rounded disabled:opacity-40 cursor-pointer"
         >
           Previous
         </button>
@@ -139,7 +139,7 @@ const SpecialCoffee = () => {
         <button
           onClick={nextPage}
           disabled={currentPage === totalPage}
-          className="py-2 px-4 border rounded disabled:opacity-40"
+          className="py-2 px-4 border rounded disabled:opacity-40 cursor-pointer"
         >
           Next
         </button>
