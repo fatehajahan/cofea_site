@@ -69,19 +69,6 @@ const SpecialCoffee = () => {
   }
   return (
     <div className='pt-[80px] px-4 md:px-8 lg:px-16'>
-      <ToastContainer
-        position="top-right"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
       <div className="max-w-[1320px] mx-auto">
         <h3 className='font-playfair text-[28px] md:text-[32px] font-semibold uppercase text-center mb-12'>
           Our Special Coffee

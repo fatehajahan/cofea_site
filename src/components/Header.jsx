@@ -100,19 +100,6 @@ const Header = ({ setActiveFromTop }) => {
   };
   return (
     <header className="relative z-30 w-full">
-      <ToastContainer
-        position="top-right"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
       <div className="container">
         <div className="py-[25px] flex items-center justify-between">
           {/* Logo */}
